@@ -24,11 +24,9 @@ public class User {
 	@JsonView(View.Summary.class)
 	private String username;
 	private String password;
-	@JsonView(View.Summary.class)
 	private String email;
 	@JsonView(View.Summary.class)
 	private boolean enabled;
-	@JsonView(View.Summary.class)
 	private Set<Role> roles;
 	
 	public void setId(Long id) {

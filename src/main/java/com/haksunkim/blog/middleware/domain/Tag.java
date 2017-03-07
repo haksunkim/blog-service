@@ -2,33 +2,32 @@ package com.haksunkim.blog.middleware.domain;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
-@Table(name = "role")
-public class Role {
+@Table(name="tag",uniqueConstraints = @UniqueConstraint(columnNames = {"name"}))
+public class Tag {
 	private Long id;
-	@JsonView(View.Summary.class)
 	private String name;
 	@JsonIgnore
-	private Set<User> users;
-	
-	public void setId(Long id) {
-		this.id = id;
-	}
+	private Set<Article> articles;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public Long getId() {
-		return this.id;
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
@@ -37,11 +36,11 @@ public class Role {
 		this.name = name;
 	}
 	
-	@ManyToMany(mappedBy = "roles")
-	public Set<User> getUsers() {
-		return users;
+	@ManyToMany(mappedBy="tags")
+	public Set<Article> getArticles() {
+		return articles;
 	}
-	public void setUsers(Set<User> users) {
-		this.users = users;
+	public void setArticles(Set<Article> articles) {
+		this.articles = articles;
 	}
 }
