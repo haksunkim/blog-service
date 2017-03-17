@@ -1,6 +1,8 @@
 language: java
 
-sudo: false
+sudo: true
+addons:
+  postgresql: "9.6"
 
 before_build:
   - wget http://apache.claz.org/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
@@ -13,7 +15,12 @@ before_build:
 cache:
   directories:
     - $HOME/.m2
-    
+
+before_script:
+  - psql -c 'create database blog;' -U postgres
+  - psql -c 'create user blog with password \'blog\';' -U postgres
+  - psql -c 'grant all privileges on database blog to blot;' -U postgres
+
 script: mvn install
 
 jdk:
