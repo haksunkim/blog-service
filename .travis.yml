@@ -17,7 +17,7 @@ cache:
 script: mvn install
 
 jdk:
-- openjdk8
+- oraclejdk8
 
 branches:
   only:
