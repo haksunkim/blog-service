@@ -16,7 +16,7 @@ import javax.persistence.UniqueConstraint;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
-@Table(name = "user",uniqueConstraints = @UniqueConstraint(columnNames = {"username", "email"}))
+@Table(name = "user_entity",uniqueConstraints = @UniqueConstraint(columnNames = {"username", "email"}))
 public class User {
 	
 	private Long id;
@@ -34,7 +34,7 @@ public class User {
 	}
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Long getId() {
 		return this.id;
 	}
