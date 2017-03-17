@@ -1,0 +1,28 @@
+language: java
+
+sudo: false
+
+before_build:
+  - wget http://apache.claz.org/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+  - tar zxvf apache-maven-3.3.9-bin.tar.gz
+  - chmod +x apache-maven-3.3.9/bin/mvn
+  - export M2_HOME=$PWD/apache-maven-3.3.9
+  - export PATH=$PWD/apache-maven-3.3.9/bin:${PATH}
+  - hash -r
+  
+cache:
+  directories:
+    - $HOME/.m2
+    
+script: mvn install
+
+jdk:
+- openjdk8
+
+branches:
+  only:
+  - master
+
+notifications:
+  email:
+  - itpro@haksunkim.com
