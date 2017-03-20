@@ -39,6 +39,7 @@ notifications:
 deploy:
   provider: releases
   api_key: $GIT_HUB_TOKEN
+  file_glob: true
   file: $TRAVIS_BUILD_DIR/target/blog-middleware*.jar
   skip_cleanup: true
   on:
