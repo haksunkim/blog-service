@@ -30,7 +30,16 @@ jdk:
 branches:
   only:
   - master
+  - development
 
 notifications:
   email:
   - itpro@haksunkim.com
+
+deploy:
+  provider: releases
+  api_key: $GIT_HUB_TOKEN
+  file: $TRAVIS_BUILD_DIR/target/*.jar
+  skip_cleanup: true
+  on:
+    tags: true
