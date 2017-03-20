@@ -22,7 +22,7 @@ before_script:
   - psql -c "create user blog with password 'blog';" -U postgres
   - psql -c 'grant all privileges on database blog to blog;' -U postgres
 
-script: mvn install
+script: mvn package
 
 jdk:
 - oraclejdk8
