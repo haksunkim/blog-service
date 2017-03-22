@@ -1,6 +1,6 @@
 node{
     stage 'Build, Test and Package'
-    env.PATH = "${tool 'apache-maven-3.3.9'}/bin:${env.PATH}"
+    env.PATH = "${tool 'M3'}/bin:${env.PATH}"
     git url: "https://github.com/haksunkim/blog-service.git"
     // workaround, taken from https://github.com/jenkinsci/pipeline-examples/blob/master/pipeline-examples/gitcommit/gitcommit.groovy
     def commitid = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
